@@ -6,7 +6,7 @@ const MongoClient = require('mongodb').MongoClient
 var app = express();
 
 
-MongoClient.connect('mongodb+srv://rosskeeley:dude0144Quotes@crud-express-quote-app.yzkex.mongodb.net/crud-express-quote-app?retryWrites=true&w=majority',
+MongoClient.connect('Your mongoDB Connection string here',
 { useUnifiedTopology: true })
 .then(client => {
   console.log('Connected to Database');
