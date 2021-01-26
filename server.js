@@ -62,6 +62,24 @@ MongoClient.connect('mongodb+srv://rosskeeley:dude0144Quotes@crud-express-quote-
     .catch(error => console.error(error));
   });
 
+// START OF APP.DELETE
+  app.delete('/quotes', (req, res) => {
+    // MongoDB delete method removes a document from the database
+    quotesCollection.deleteOne(
+      // Query - filters the collection for the entries being searched for
+      // In this case, the name 'Darth Vader' has already been passed from Fetch, so req.body.name can be used instead
+      { name: req.body.name }
+    )
+    .then(result => {
+      if (result.deletedCount === 0) {
+        return res.json('No quote to delete')
+      }
+      // Sends a response back to the JS
+      res.json("Deleted Darth Vadar's quote");
+    })
+    .catch(error => console.error(error));
+  });
+
   app.listen(3000, function() {
     console.log('Listening on 3000 babaaaay yahaaaaa');
   });
